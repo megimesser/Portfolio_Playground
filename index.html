@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <img>
+        <h1>Portfolio<br>Heinze<br>Playground</h1>
+        <ul>
+            <li class="navlink">Info</li>
+            <li class="navlink">Projectdetails</li>
+            <li class="navlink">Skills</li>
+            <li class="navlink">Recommendations</li>
+            <li id="hamburger"><img src="/Bilder/Hamburger_icon.svg"></li>
+        </ul>
+    </nav>
+    <section id="about">
+        <h1>Hi, I´m Max</h1>
+        <div id="vorstellung">
+            <img src="/Bilder/IMG_0053.JPG">
+            <p>As a developer, I have gained extensive experience in building robust and scalable web applications. I have a strong proficiency in various programming languages and frameworks, which has allowed me to deliver high-quality solutions. Working collaboratively with diverse teams has also enhanced my problem-solving skills and adaptability in dynamic environments.</p>
+        </div>
+    </section>
+    <section id="logos">
+        <h2 id="skill">My Skills</h2>
+        <div id="logo_section">
+            <div class="item">
+                <img class="logo" src="/Bilder/python-logo-only.png">
+                <p>Python</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/CSS-Logo.png">
+                <p>CSS</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/HTML5_logo_and_wordmark.svg.png">
+                <p>HTML</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/javascript-logo-javascript-icon-transparent-free-png.webp">
+                <p>Java Script</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/npm-node-package-manager-logo-DE93649ED1-seeklogo.com.png">
+                <p>Node Package Manager</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/React-icon.svg.png">
+                <p>React</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/node-js-icon-454x512-nztofx17.png">
+                <p>Node JS</p>
+            </div>
+            <div class="item">
+                <img class="logo" src="/Bilder/25231.png">
+                <p>Git Hub</p>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <div id="projects_untersection">
+            <h1 class="mid">Projects</h1>
+            <div class="unterproject">
+                <h3 class="mid">Micro Saas Application</h3>
+                <p class="mid">I built a small Application with React to track workouts</p>
+                <div class="linie"></div>
+            </div>
+            <div class="unterproject">
+                <h3 class="mid">Over 20 company websites</h3>
+                <p class="mid">I built over 20 business websites for middle and small companies</p>
+                <div class="linie"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id ="wrapper_1">
+        <h3 id ="recomments">Recommendation</h3>
+        <section id="recommendations">
+            <div id="kommentare"></div>
+            <div id="grouper">
+                <input id="name" placeholder="Name">
+                <input id="kommentar_1" placeholder="Kommentar">
+                <button id="button">Submit</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="home" src="/Bilder/house-svgrepo-com.png"></div>
+
+
+    <script>
+        // Variablen für die Kommentarsektion
+        let kommentare = document.getElementById("kommentare");
+        let name = document.getElementById("name");
+        let kommentar_1 = document.getElementById("kommentar_1");
+        let button = document.getElementById("button");
+
+        // Event-Listener für den Button in der Kommentarsektion
+        button.addEventListener('click', function() {
+            let inputText = kommentar_1.value;
+            let inputName = name.value; 
+            if(inputText.length > 0 && inputText.length < 200){
+                var kom = document.createElement("div");
+                kom.className = "newclass";
+
+                if(inputName.length > 0){
+                    var nameP = document.createElement("p"); 
+                    var nameText = document.createTextNode(inputName);
+                    nameP.appendChild(nameText);
+                    nameP.className = "name";
+                    kom.appendChild(nameP);
+
+                } else {
+                    console.log("kein name");
+                }
+
+                var paragraph = document.createElement("p");
+                var text = document.createTextNode(inputText);
+                paragraph.appendChild(text);
+                kom.appendChild(paragraph);
+                kommentare.appendChild(kom);
+
+                // Eingabefelder leeren
+                kommentar_1.value = ''; 
+                name.value = '';
+                alert("Thank you for submitting a recommendation!");
+
+                // Update section height
+                kommentare.style.height = 'auto';
+            } else {
+                alert("Der Kommentar ist leer oder zu lang");
+                console.log("commentary is empty or too long");
+            }
+        });
+
+        // Hamburger-Menü
+        let hamburger = document.getElementById("hamburger");
+
+        hamburger.addEventListener('click', function() {
+            let navlinks = document.querySelectorAll('nav ul .navlink');
+            navlinks.forEach(function(link) {
+                if (link.style.display === 'none' || link.style.display === '') {
+                    link.style.display = 'block';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
